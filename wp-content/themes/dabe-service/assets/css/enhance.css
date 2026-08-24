@@ -47,7 +47,9 @@
 /* ---------- HEADER con logo reale ---------- */
 .brand__logo{height:30px;width:auto;display:block;transition:opacity .3s}
 .brand__logo--light{filter:none}                 /* logo bianco knockout: visibile su scuro */
-.brand__logo--dark{position:absolute;opacity:0}  /* logo colore: nascosto finché non scrolled */
+/* logo completo (casina): proporzioni piu' quadrate del wordmark -> a 30px sparisce.
+   Ha un'altezza propria, quasi piena rispetto all'header scrolled (64px). */
+.brand__logo--dark{position:absolute;opacity:0;height:50px}
 .site-header.scrolled .brand__logo--light{opacity:0}
 .site-header.scrolled .brand__logo--dark{position:relative;opacity:1}
 .brand--img{position:relative}
