@@ -239,8 +239,26 @@ a.link-arrow:focus-visible,.btn:focus-visible{outline-offset:4px}
 .prose ul{margin:0 0 1rem 1.2rem;list-style:disc}
 .prose a{color:var(--blu-700);text-decoration:underline;text-underline-offset:3px}
 /* la card "servizio" usata anche come work nell'archive: niente doppio bordo */
-.svc.work{cursor:default}
 .svc.work:hover{transform:translateY(-7px)}
+/* Card interamente cliccabili (QA anteprima): la card intera suggerisce il click
+   (hover, bordo) ma solo la scritta era un link -> il link interno si estende
+   sull'intera card. Vale per servizi, settori e lavori correlati. */
+.svc{position:relative}
+.svc .link-arrow::after{content:"";position:absolute;inset:0;z-index:1}
+
+/* ---------- Scheda progetto (single-progetto): foto + pannello info a destra ---------- */
+.proj-lead{display:grid;grid-template-columns:1.55fr 1fr;gap:1.3rem;align-items:stretch}
+.proj-lead .integ__media{aspect-ratio:auto;min-height:400px;height:100%}
+.spec-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);
+  padding:1.6rem 1.7rem;display:flex;flex-direction:column;gap:0}
+.spec-row{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;
+  padding:.78rem 0;border-bottom:1px solid var(--line)}
+.spec-row:last-of-type{border-bottom:0}
+.spec-row b{font-family:var(--mono,monospace);font-weight:600;font-size:.68rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);white-space:nowrap}
+.spec-row span{font-family:"Space Grotesk";font-weight:600;font-size:1.02rem;text-align:right}
+.spec-card .svc__tags{margin-top:auto;padding-top:1rem}
+@media (max-width:860px){.proj-lead{grid-template-columns:1fr}.proj-lead .integ__media{min-height:230px}}
 .page-hero .pill-mono{color:var(--cyan-300)}
 .page-hero__dabe{position:absolute;right:clamp(1rem,5vw,5rem);bottom:0;width:clamp(130px,15vw,210px);height:auto;filter:drop-shadow(0 20px 26px rgba(0,0,0,.4));pointer-events:none;z-index:2}
 @media (max-width:820px){.page-hero__dabe{display:none}}
