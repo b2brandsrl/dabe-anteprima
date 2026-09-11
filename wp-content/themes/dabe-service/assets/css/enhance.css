@@ -417,7 +417,13 @@ a.link-arrow:focus-visible,.btn:focus-visible{outline-offset:4px}
 /* ---- P1.4 / Editorial heads: indice di sezione + titoli più grandi ---- */
 .head:has(.head__idx){display:grid;grid-template-columns:clamp(70px,10vw,108px) 1fr;gap:clamp(.5rem,2vw,1.3rem);align-items:start;max-width:none}
 .head:has(.head__idx).center{display:block}
-.head__idx{grid-column:1;grid-row:1;font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;color:var(--steel-500);padding-top:.55rem;white-space:nowrap}
+/* L'indice e l'eyebrow stanno sulla stessa riga della griglia: invece di spingere l'indice
+   giu' con un padding a occhio (che lo lasciava piu' basso del titolino), gli do lo stesso
+   box dell'eyebrow — inline-flex centrato e identica altezza di riga. Cosi' combaciano. */
+.head__idx{grid-column:1;grid-row:1;font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;
+  color:var(--steel-500);white-space:nowrap;
+  display:inline-flex;align-items:center;line-height:1.2;min-height:1.25rem}
+.head:has(.head__idx) .eyebrow{line-height:1.2;min-height:1.25rem}
 .section--dark .head__idx{color:var(--cyan-300)}
 .head:has(.head__idx) .eyebrow,.head:has(.head__idx) h2,.head:has(.head__idx) .lead{grid-column:2}
 .head h2{font-size:clamp(2rem,4.7vw,3.7rem)}
