@@ -45,14 +45,15 @@
 .divider span{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--steel-500)}
 
 /* ---------- HEADER con logo reale ---------- */
-.brand__logo{height:30px;width:auto;display:block;transition:opacity .3s}
-.brand__logo--light{filter:none}                 /* logo bianco knockout: visibile su scuro */
-/* logo completo (casina): proporzioni piu' quadrate del wordmark -> a 30px sparisce.
-   Ha un'altezza propria, quasi piena rispetto all'header scrolled (64px). */
-.brand__logo--dark{position:absolute;opacity:0;height:50px}
+/* I due loghi si scambiano allo scroll. Perche' il cambio non faccia SALTARE la posizione:
+   il contenitore ha altezza fissa ed entrambi restano ancorati allo stesso centro —
+   il completo resta sempre in absolute, cosi' non rientra mai nel flusso spingendo l'altro. */
+.brand--img{position:relative;display:flex;align-items:center;height:52px}
+.brand__logo{width:auto;display:block;transition:opacity .3s}
+.brand__logo--light{height:30px}                 /* logo bianco knockout: visibile su scuro */
+.brand__logo--dark{position:absolute;left:0;top:50%;transform:translateY(-50%);opacity:0;height:50px}
 .site-header.scrolled .brand__logo--light{opacity:0}
-.site-header.scrolled .brand__logo--dark{position:relative;opacity:1}
-.brand--img{position:relative}
+.site-header.scrolled .brand__logo--dark{opacity:1}
 
 /* ---------- HERO: blueprint che si accende (no foto) ---------- */
 .hero{--grid:rgba(122,220,247,.07)}
@@ -95,7 +96,10 @@
 .hub.in .hub__line{stroke-dashoffset:0}
 .hub__pulse{fill:var(--cyan-400)}
 .hub__center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;
-  width:34%;aspect-ratio:1;border-radius:26%;display:grid;place-items:center;text-align:center;
+  width:34%;aspect-ratio:1;border-radius:26%;text-align:center;
+  /* flex, non grid: con grid i due figli finiscono in due righe separate e la casina
+     si centra solo nella meta' alta. Cosi' emblema + scritta sono un blocco unico centrato. */
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.45rem;
   background:var(--grad-blu);color:#fff;box-shadow:0 24px 50px -18px rgba(10,77,162,.7),inset 0 1px 0 rgba(255,255,255,.3)}
 .hub__center b{font-family:"Space Grotesk";font-weight:700;font-size:1.15rem;line-height:1}
 .hub__center small{font-family:var(--mono);font-size:.56rem;letter-spacing:.12em;opacity:.85;margin-top:.2rem}
@@ -447,7 +451,7 @@ a.link-arrow:focus-visible,.btn:focus-visible{outline-offset:4px}
 @keyframes spark{from{stroke-dashoffset:84}to{stroke-dashoffset:0}}
 @media (prefers-reduced-motion:reduce){.hub__diagram{--p:1}.hub__diagram .hub__node{opacity:1;transform:translate(-50%,-50%) scale(1)}.hub__spark{display:none}}
 /* emblema (casa/favicon) dentro il nodo centrale DABE */
-.hub__center .hub__emblem{width:50%;height:auto;display:block;margin:0 auto .3rem;filter:drop-shadow(0 3px 6px rgba(0,0,0,.28))}
+.hub__center .hub__emblem{width:56%;height:auto;display:block;margin:0 auto;filter:drop-shadow(0 3px 6px rgba(0,0,0,.28))}
 .hub__center small{font-family:var(--mono);font-size:.52rem;letter-spacing:.14em;opacity:.92}
 
 /* ---------- Mr Dabe mezzo-busto: SEMPRE GRANDE e coerente ovunque ---------- */
