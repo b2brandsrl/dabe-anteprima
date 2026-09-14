@@ -209,6 +209,12 @@
 .mega__col a{display:block;padding:.42rem .5rem;border-radius:8px;color:var(--ink-2);font-size:.92rem;font-weight:500}
 .mega__col a:hover{background:var(--nebbia);color:var(--blu-700)}
 .site-header.scrolled .nav .has-mega>a{color:var(--ink-2)}
+/* variante stretta: una colonna sola (Settori) */
+.mega--sm{width:min(300px,90vw);grid-template-columns:1fr;padding:1rem 1.1rem}
+/* sottovoci nel pannello mobile (Settori) */
+.mp-sub{display:flex;flex-direction:column;padding-left:.9rem;margin-top:-.1rem}
+.mp-sub a{font-size:.95rem;font-weight:500;padding:.62rem .6rem;border-bottom:1px dashed var(--line);color:var(--ink-2)}
+.mp-sub a::before{content:"›";margin-right:.5rem;color:var(--blu-600)}
 
 /* ==========================================================
    Utility / a11y / performance
